@@ -1,4 +1,3 @@
-import { FastifyRequest, FastifyReply } from 'fastify'
 import { FromSchema } from "json-schema-to-ts";
 
 const addPetBodySchema = {
@@ -41,11 +40,6 @@ const addPetBodySchema = {
   }
 } as const;
 
-export type AddPetRequest = FastifyRequest<{
-  Body: FromSchema<typeof addPetBodySchema>
-}>;
-
-export type AddPetReply = FastifyReply;
 export type AddPetBody = FromSchema<typeof addPetBodySchema>;
 
 
