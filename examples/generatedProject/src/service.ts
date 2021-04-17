@@ -1,74 +1,21 @@
 // implementation of the operations in the openapi specification
+import { FastifyRequest, FastifyReply } from 'fastify'
+import { AddPetBody } from "./service.types"
 
 class Service {
-  constructor() {}
-
-
+  constructor(opts: any) { }
 
   // Operation: addPet
   // URL: /pet
   // summary:  Add a new pet to the store
-  // req.body
-  //   type: object
-  //   required:
-  //     - name
-  //     - photoUrls
-  //   properties:
-  //     id:
-  //       type: integer
-  //       format: int64
-  //     category:
-  //       type: object
-  //       properties:
-  //         id:
-  //           type: integer
-  //           format: int64
-  //         name:
-  //           type: string
-  //       xml:
-  //         name: Category
-  //     name:
-  //       type: string
-  //       example: doggie
-  //     photoUrls:
-  //       type: array
-  //       xml:
-  //         name: photoUrl
-  //         wrapped: true
-  //       items:
-  //         type: string
-  //     tags:
-  //       type: array
-  //       xml:
-  //         name: tag
-  //         wrapped: true
-  //       items:
-  //         type: object
-  //         properties:
-  //           id:
-  //             type: integer
-  //             format: int64
-  //           name:
-  //             type: string
-  //         xml:
-  //           name: Tag
-  //     status:
-  //       type: string
-  //       description: pet status in the store
-  //       enum:
-  //         - available
-  //         - pending
-  //         - sold
-  //   xml:
-  //     name: Pet
-  //
+
   // valid responses
   //   '405':
   //     description: Invalid input
   //
 
-  async addPet(req, reply) {
-    console.log("addPet", req.params);
+  async addPet(req: FastifyRequest<{Body: AddPetBody}>, reply: FastifyReply) {
+    console.log("addPet", req.body);
     return { key: "value" };
   }
 
@@ -139,7 +86,7 @@ class Service {
   //     description: Validation exception
   //
 
-  async updatePet(req, reply) {
+  async updatePet(req: FastifyRequest, reply: FastifyReply) {
     console.log("updatePet", req.params);
     return { key: "value" };
   }
@@ -219,7 +166,7 @@ class Service {
   //     description: Invalid status value
   //
 
-  async findPetsByStatus(req, reply) {
+  async findPetsByStatus(req: FastifyRequest, reply: FastifyReply) {
     console.log("findPetsByStatus", req.params);
     return { key: "value" };
   }
@@ -299,7 +246,7 @@ class Service {
   //     description: Invalid tag value
   //
 
-  async findPetsByTags(req, reply) {
+  async findPetsByTags(req: FastifyRequest, reply: FastifyReply) {
     console.log("findPetsByTags", req.params);
     return { key: "value" };
   }
@@ -379,7 +326,7 @@ class Service {
   //     description: Pet not found
   //
 
-  async getPetById(req, reply) {
+  async getPetById(req: FastifyRequest, reply: FastifyReply) {
     console.log("getPetById", req.params);
     return { key: "value" };
   }
@@ -412,7 +359,7 @@ class Service {
   //     description: Invalid input
   //
 
-  async updatePetWithForm(req, reply) {
+  async updatePetWithForm(req: FastifyRequest, reply: FastifyReply) {
     console.log("updatePetWithForm", req.params);
     return { key: "value" };
   }
@@ -443,7 +390,7 @@ class Service {
   //     description: Pet not found
   //
 
-  async deletePet(req, reply) {
+  async deletePet(req: FastifyRequest, reply: FastifyReply) {
     console.log("deletePet", req.params);
     return { key: "value" };
   }
@@ -486,7 +433,7 @@ class Service {
   //           type: string
   //
 
-  async uploadFile(req, reply) {
+  async uploadFile(req: FastifyRequest, reply: FastifyReply) {
     console.log("uploadFile", req.params);
     return { key: "value" };
   }
@@ -505,7 +452,7 @@ class Service {
   //         format: int32
   //
 
-  async getInventory(req, reply) {
+  async getInventory(req: FastifyRequest, reply: FastifyReply) {
     console.log("getInventory", req.params);
     return { key: "value" };
   }
@@ -576,7 +523,7 @@ class Service {
   //     description: Invalid Order
   //
 
-  async placeOrder(req, reply) {
+  async placeOrder(req: FastifyRequest, reply: FastifyReply) {
     console.log("placeOrder", req.params);
     return { key: "value" };
   }
@@ -630,7 +577,7 @@ class Service {
   //     description: Order not found
   //
 
-  async getOrderById(req, reply) {
+  async getOrderById(req: FastifyRequest, reply: FastifyReply) {
     console.log("getOrderById", req.params);
     return { key: "value" };
   }
@@ -655,7 +602,7 @@ class Service {
   //     description: Order not found
   //
 
-  async deleteOrder(req, reply) {
+  async deleteOrder(req: FastifyRequest, reply: FastifyReply) {
     console.log("deleteOrder", req.params);
     return { key: "value" };
   }
@@ -694,7 +641,7 @@ class Service {
   //     description: successful operation
   //
 
-  async createUser(req, reply) {
+  async createUser(req: FastifyRequest, reply: FastifyReply) {
     console.log("createUser", req.params);
     return { key: "value" };
   }
@@ -735,7 +682,7 @@ class Service {
   //     description: successful operation
   //
 
-  async createUsersWithArrayInput(req, reply) {
+  async createUsersWithArrayInput(req: FastifyRequest, reply: FastifyReply) {
     console.log("createUsersWithArrayInput", req.params);
     return { key: "value" };
   }
@@ -776,7 +723,7 @@ class Service {
   //     description: successful operation
   //
 
-  async createUsersWithListInput(req, reply) {
+  async createUsersWithListInput(req: FastifyRequest, reply: FastifyReply) {
     console.log("createUsersWithListInput", req.params);
     return { key: "value" };
   }
@@ -816,7 +763,7 @@ class Service {
   //     description: Invalid username/password supplied
   //
 
-  async loginUser(req, reply) {
+  async loginUser(req: FastifyRequest, reply: FastifyReply) {
     console.log("loginUser", req.params);
     return { key: "value" };
   }
@@ -830,7 +777,7 @@ class Service {
   //     description: successful operation
   //
 
-  async logoutUser(req, reply) {
+  async logoutUser(req: FastifyRequest, reply: FastifyReply) {
     console.log("logoutUser", req.params);
     return { key: "value" };
   }
@@ -881,7 +828,7 @@ class Service {
   //     description: User not found
   //
 
-  async getUserByName(req, reply) {
+  async getUserByName(req: FastifyRequest, reply: FastifyReply) {
     console.log("getUserByName", req.params);
     return { key: "value" };
   }
@@ -931,7 +878,7 @@ class Service {
   //     description: User not found
   //
 
-  async updateUser(req, reply) {
+  async updateUser(req: FastifyRequest, reply: FastifyReply) {
     console.log("updateUser", req.params);
     return { key: "value" };
   }
@@ -956,10 +903,10 @@ class Service {
   //     description: User not found
   //
 
-  async deleteUser(req, reply) {
+  async deleteUser(req: FastifyRequest, reply: FastifyReply) {
     console.log("deleteUser", req.params);
     return { key: "value" };
   }
 }
 
-export default opts => new Service(opts);
+export default (opts: any) => new Service(opts);

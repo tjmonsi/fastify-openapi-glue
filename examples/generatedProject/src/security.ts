@@ -1,9 +1,11 @@
 // implementation of the security schemes in the openapi specification
+import { FastifyReply, FastifyRequest } from 'fastify';
+
 
 class Security {
   constructor() {}
 
-  initialize(schemes){
+  initialize(schemes:object){
     // schemes will contain securitySchemes as found in the openapi specification
     console.log("Initialize:", JSON.stringify(schemes));
   }
@@ -11,7 +13,7 @@ class Security {
 
   // Security scheme: petstore_auth
   // Type: oauth2
-  async petstore_auth(req, reply, params) {
+  async petstore_auth(req:FastifyRequest, reply: FastifyReply, params:object) {
     console.log("petstore_auth: Authenticating request");
     
     // If validation fails: throw new Error('Could not authenticate request')
@@ -22,7 +24,7 @@ class Security {
 
   // Security scheme: api_key
   // Type: apiKey
-  async api_key(req, reply, params) {
+  async api_key(req:FastifyRequest, reply:FastifyReply, params:object) {
     console.log("api_key: Authenticating request");
     
     // If validation fails: throw new Error('Could not authenticate request')
